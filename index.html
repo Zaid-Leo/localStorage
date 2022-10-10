@@ -26,7 +26,7 @@
         <button id="btnInsert" type="button">Insert Data</button>
 
         <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", () => {
+            window.onload = () => {
                 const inpKey = document.getElementById("inpKey");
                 const inpValue = document.getElementById("inpValue");
                 const btnInsert = document.querySelector("#btnInsert");
@@ -38,16 +38,19 @@
 
                     if (key && value) {
                         localStorage.setItem(key, value);
-                        location.reload;
+                        // location.reload;
                     }
                 };
 
                 for (let i = 0; i < localStorage.length; i++) {
                     const key = localStorage.key(i);
                     const value = localStorage.getItem(key);
-                    lsOutput.innerHTML += `${key} : ${value}<br/>`;
+                    function outputShow() {
+                        lsOutput.innerHTML += `${key} : ${value}<br/>`;
+                    }
+                    outputShow();
                 }
-            });
+            };
         </script>
     </body>
 </html>
