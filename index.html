@@ -31,6 +31,9 @@
                 const inpValue = document.getElementById("inpValue");
                 const btnInsert = document.querySelector("#btnInsert");
                 const lsOutput = document.querySelector("#lsOutput");
+                function outputShow(key, value) {
+                    lsOutput.innerHTML += `${key} : ${value}<br/>`;
+                }
 
                 btnInsert.onclick = function () {
                     const key = inpKey.value;
@@ -38,17 +41,14 @@
 
                     if (key && value) {
                         localStorage.setItem(key, value);
-                        // location.reload;
+                        outputShow(key, value);
                     }
                 };
 
                 for (let i = 0; i < localStorage.length; i++) {
                     const key = localStorage.key(i);
                     const value = localStorage.getItem(key);
-                    function outputShow() {
-                        lsOutput.innerHTML += `${key} : ${value}<br/>`;
-                    }
-                    outputShow();
+                    outputShow(key, value);
                 }
             };
         </script>
